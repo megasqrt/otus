@@ -32,11 +32,16 @@ public class QuestuatorImpl implements Questuator {
 
     @Override
     public void getQuest() {
+        String tmpFName="";
+        String tmpLname="";
+
         sout.info("Для прохождения теста введите своё Имя");
-        student.setFirstName(readAnswerInConsole());
+        tmpFName=readAnswerInConsole();
 
         sout.info("и фамилию");
-        student.setLastName(readAnswerInConsole());
+        tmpLname=readAnswerInConsole();
+
+        student= Student.builder().firstName(tmpFName).lastName(tmpLname).build();
 
         sout.info("Для ответа на вопрос, введити цифру правильного варината ответа и нажмите Enter");
         startQuest();
