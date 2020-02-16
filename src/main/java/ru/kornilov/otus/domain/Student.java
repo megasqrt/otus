@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @Builder
 public class Student {
-    private String lastName;
-    private String firstName;
+    private final String lastName;
+    private final String firstName;
 
     public String getFullName() {
         return firstName + " " + lastName;

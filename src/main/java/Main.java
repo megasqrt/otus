@@ -9,8 +9,5 @@ public class Main {
 
         Questuator questuator = context.getBean(Questuator.class);
         questuator.getQuest();
-
     }
-
-
 }

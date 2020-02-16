@@ -97,10 +97,6 @@ public class QuestuatorImpl implements Questuator {
         }
     }
 
-    public int readUserInput() throws IOException {
-        return Integer.parseInt(console.readLine());
-    }
-
     private String readAnswerInConsole() {
         String str = readConsole();
         while (str.isEmpty()) {
@@ -119,5 +115,4 @@ public class QuestuatorImpl implements Questuator {
         }
         return readLine;
     }
-
 }
