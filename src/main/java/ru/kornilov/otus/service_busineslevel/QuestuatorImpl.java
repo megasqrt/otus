@@ -1,5 +1,6 @@
 package ru.kornilov.otus.service_busineslevel;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.kornilov.otus.dao.QuestionDao;
@@ -8,42 +9,38 @@ import ru.kornilov.otus.domain.Student;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ResourceBundle;
 
+@RequiredArgsConstructor
 public class QuestuatorImpl implements Questuator {
+
+    private static int tryAnswerInt;
+
     private static final Logger sout = LogManager.getLogger(Questuator.class);
+    private final String messageFile;
 
     private static String customAnswer = "";
-    private static int tryAnswerInt = 0;
+    private final BufferedReader console;
     private final QuestionDao questionDao;
     private Student student = Student.builder().build();
-
-    private BufferedReader console;
-
-    QuestuatorImpl(QuestionDao questionDao) {
-        this.questionDao = questionDao;
-        this.console = new BufferedReader(new InputStreamReader(System.in));
-    }
-
-    QuestuatorImpl(QuestionDao questionDao, BufferedReader bufferedReader) {
-        this.questionDao = questionDao;
-        this.console = bufferedReader;
-    }
+    private ResourceBundle mess;
 
     @Override
     public void getQuest() {
-        String tmpFName="";
-        String tmpLname="";
+        mess = ResourceBundle.getBundle(messageFile);
+        tryAnswerInt = 0;
+        String tmpFName;
+        String tmpLname;
 
-        sout.info("Для прохождения теста введите своё Имя");
+        sout.info(mess.getString("start.fname"));
         tmpFName=readAnswerInConsole();
 
-        sout.info("и фамилию");
+        sout.info(mess.getString("start.lname"));
         tmpLname=readAnswerInConsole();
 
         student= Student.builder().firstName(tmpFName).lastName(tmpLname).build();
 
-        sout.info("Для ответа на вопрос, введити цифру правильного варината ответа и нажмите Enter");
+        sout.info(mess.getString("quest.instruction"));
         startQuest();
         writeAnswer();
     }
@@ -59,11 +56,11 @@ public class QuestuatorImpl implements Questuator {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        sout.info("Правильных ответов " + tryAnswerInt);
+        sout.info(mess.getString("quest.end") + " " + tryAnswerInt);
     }
 
     private void showQuestion(Question quest) {
-        sout.info("Вопрос #:" + quest.getQuestionText());
+        sout.info(mess.getString("quest.quest") + " #:" + quest.getQuestionText());
         for (int i = 0; i < quest.getAnswer().length; i++) {
             sout.info((i + 1) + ") " + quest.getAnswer()[i]);
         }
@@ -71,9 +68,9 @@ public class QuestuatorImpl implements Questuator {
         if (!consoleAnswer.isEmpty()) {
             if (consoleAnswer.equals(quest.getTryAnswerIndex())) {
                 tryAnswerInt++;
-            } else if (quest.getQuestionText().equals("Вам Нравиться данный тест")) {
+            } else if (quest.getQuestionText().equals(mess.getString("quest.like"))) {
                 if (consoleAnswer.equals("3")) {
-                    sout.info("введите свой отзыв о тесте");
+                    sout.info(mess.getString("quest.write"));
                     customAnswer = readAnswerInConsole();
                 } else {
                     customAnswer = consoleAnswer;
@@ -83,20 +80,20 @@ public class QuestuatorImpl implements Questuator {
     }
 
     private void writeAnswer() {
-        sout.debug("Студент " + student.getFullName());
+        sout.debug(mess.getString("answer.student") + " " + student.getFullName());
         if (tryAnswerInt == 0)
-            sout.debug("набрал " + tryAnswerInt + " правильных ответов");
+            sout.debug(mess.getString("answer.get") + " " + tryAnswerInt + " " + mess.getString("answer.answer"));
         else
-            sout.debug("набрал " + tryAnswerInt + " правильных ответа");
+            sout.debug(mess.getString("answer.get") + " " + tryAnswerInt + " " + mess.getString("answer.answer"));
         switch (customAnswer) {
             case "1":
-                sout.debug("и ему нравится этот тест");
+                sout.debug(mess.getString("answer.like"));
                 break;
             case "2":
-                sout.debug("и ему не нравится этот тетс");
+                sout.debug(mess.getString("answer.disLike"));
                 break;
             default:
-                sout.debug("и его мнение о тесте");
+                sout.debug(mess.getString("answer.imho"));
                 sout.debug(customAnswer);
                 break;
         }
@@ -105,7 +102,7 @@ public class QuestuatorImpl implements Questuator {
     private String readAnswerInConsole() {
         String str = readConsole();
         while (str.isEmpty()) {
-            sout.info("пустой ответ не защитывается, повторите ввод");
+            sout.info(mess.getString("quest.empty"));
             str = readConsole();
         }
         return str;
