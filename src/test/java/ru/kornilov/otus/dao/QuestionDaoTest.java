@@ -14,10 +14,9 @@ class QuestionDaoTest {
     @DisplayName("Должен возвращать вопросы")
     @Test
     void shouldHaveReturnQuestionsTest() throws Exception {
-        QuestionDao questionDao = new QuestionDaoImpl("csv/quests.csv");
+        QuestionDao questionDao = new QuestionDaoImpl("csv/quests_Ru.csv");
         List<Question> questions = questionDao.getQuestion();
 
         assertThat(questions).hasSize(5);
     }
-
 }

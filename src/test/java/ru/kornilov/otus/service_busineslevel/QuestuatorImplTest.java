@@ -34,7 +34,7 @@ public class QuestuatorImplTest {
                 .thenReturn(
                         Collections.singletonList(Question.builder().questionText("Question").answer(new String[]{"1", "2", "3"}).tryAnswerIndex("3").build()));
         mockBufferedReader = mock(BufferedReader.class);
-        questuator = new QuestuatorImpl(questionDao, mockBufferedReader);
+        questuator = new QuestuatorImpl("message_ru", mockBufferedReader, questionDao);
     }
 
     @DisplayName("Должен быть правильный ответ")
