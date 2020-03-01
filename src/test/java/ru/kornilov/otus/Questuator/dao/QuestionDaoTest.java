@@ -1,8 +1,8 @@
-package ru.kornilov.otus.dao;
+package ru.kornilov.otus.Questuator.dao;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.kornilov.otus.domain.Question;
+import ru.kornilov.otus.Questuator.domain.Question;
 
 import java.util.List;
 

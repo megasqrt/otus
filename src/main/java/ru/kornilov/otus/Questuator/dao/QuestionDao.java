@@ -1,6 +1,6 @@
-package ru.kornilov.otus.dao;
+package ru.kornilov.otus.Questuator.dao;
 
-import ru.kornilov.otus.domain.Question;
+import ru.kornilov.otus.Questuator.domain.Question;
 
 import java.util.List;
 

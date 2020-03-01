@@ -1,15 +1,15 @@
-package ru.kornilov.otus.service_busineslevel;
+package ru.kornilov.otus.Questuator.service;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.kornilov.otus.dao.QuestionDao;
-import ru.kornilov.otus.domain.Question;
-import ru.kornilov.otus.domain.Student;
+import ru.kornilov.otus.Questuator.config.AppLocale;
+import ru.kornilov.otus.Questuator.dao.QuestionDao;
+import ru.kornilov.otus.Questuator.domain.Question;
+import ru.kornilov.otus.Questuator.domain.Student;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 @RequiredArgsConstructor
 public class QuestuatorImpl implements Questuator {
@@ -17,30 +17,31 @@ public class QuestuatorImpl implements Questuator {
     private static int tryAnswerInt;
 
     private static final Logger sout = LogManager.getLogger(Questuator.class);
-    private final String messageFile;
 
     private static String customAnswer = "";
     private final BufferedReader console;
     private final QuestionDao questionDao;
     private Student student = Student.builder().build();
-    private ResourceBundle mess;
+
+    private final AppLocale appLocale;
+
 
     @Override
     public void getQuest() {
-        mess = ResourceBundle.getBundle(messageFile);
+
         tryAnswerInt = 0;
         String tmpFName;
         String tmpLname;
 
-        sout.info(mess.getString("start.fname"));
-        tmpFName=readAnswerInConsole();
+        sout.info(appLocale.getMessage("start.fname"));
+        tmpFName = readAnswerInConsole();
 
-        sout.info(mess.getString("start.lname"));
-        tmpLname=readAnswerInConsole();
+        sout.info(appLocale.getMessage("start.lname"));
+        tmpLname = readAnswerInConsole();
 
-        student= Student.builder().firstName(tmpFName).lastName(tmpLname).build();
+        student = Student.builder().firstName(tmpFName).lastName(tmpLname).build();
 
-        sout.info(mess.getString("quest.instruction"));
+        sout.info(appLocale.getMessage("quest.instruction"));
         startQuest();
         writeAnswer();
     }
@@ -56,11 +57,11 @@ public class QuestuatorImpl implements Questuator {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        sout.info(mess.getString("quest.end") + " " + tryAnswerInt);
+        sout.info(appLocale.getMessage("quest.end") + " " + tryAnswerInt);
     }
 
     private void showQuestion(Question quest) {
-        sout.info(mess.getString("quest.quest") + " #:" + quest.getQuestionText());
+        sout.info(appLocale.getMessage("quest.quest") + " #:" + quest.getQuestionText());
         for (int i = 0; i < quest.getAnswer().length; i++) {
             sout.info((i + 1) + ") " + quest.getAnswer()[i]);
         }
@@ -68,9 +69,9 @@ public class QuestuatorImpl implements Questuator {
         if (!consoleAnswer.isEmpty()) {
             if (consoleAnswer.equals(quest.getTryAnswerIndex())) {
                 tryAnswerInt++;
-            } else if (quest.getQuestionText().equals(mess.getString("quest.like"))) {
+            } else if (quest.getQuestionText().equals(appLocale.getMessage("quest.like"))) {
                 if (consoleAnswer.equals("3")) {
-                    sout.info(mess.getString("quest.write"));
+                    sout.info(appLocale.getMessage("quest.write"));
                     customAnswer = readAnswerInConsole();
                 } else {
                     customAnswer = consoleAnswer;
@@ -80,21 +81,18 @@ public class QuestuatorImpl implements Questuator {
     }
 
     private void writeAnswer() {
-        sout.debug(mess.getString("answer.student") + " " + student.getFullName());
-        if (tryAnswerInt == 0)
-            sout.debug(mess.getString("answer.get") + " " + tryAnswerInt + " " + mess.getString("answer.answer"));
-        else
-            sout.debug(mess.getString("answer.get") + " " + tryAnswerInt + " " + mess.getString("answer.answer"));
+        sout.info(appLocale.getMessage("answer.student") + " " + student.getFullName());
+        sout.info(appLocale.getMessage("answer.get") + " " + tryAnswerInt + " " + appLocale.getMessage("answer.answer"));
         switch (customAnswer) {
             case "1":
-                sout.debug(mess.getString("answer.like"));
+                sout.info(appLocale.getMessage("answer.like"));
                 break;
             case "2":
-                sout.debug(mess.getString("answer.disLike"));
+                sout.info(appLocale.getMessage("answer.disLike"));
                 break;
             default:
-                sout.debug(mess.getString("answer.imho"));
-                sout.debug(customAnswer);
+                sout.info(appLocale.getMessage("answer.imho"));
+                sout.info(customAnswer);
                 break;
         }
     }
@@ -102,7 +100,7 @@ public class QuestuatorImpl implements Questuator {
     private String readAnswerInConsole() {
         String str = readConsole();
         while (str.isEmpty()) {
-            sout.info(mess.getString("quest.empty"));
+            sout.info(appLocale.getMessage("quest.empty"));
             str = readConsole();
         }
         return str;
