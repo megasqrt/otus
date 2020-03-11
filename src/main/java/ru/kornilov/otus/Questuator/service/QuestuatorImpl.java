@@ -18,17 +18,18 @@ public class QuestuatorImpl implements Questuator {
 
     private static final Logger sout = LogManager.getLogger(Questuator.class);
 
-    private static String customAnswer = "";
+    private static String customAnswer;
     private final BufferedReader console;
     private final QuestionDao questionDao;
-    private Student student = Student.builder().build();
+    private Student student;
 
     private final AppLocale appLocale;
 
 
     @Override
     public void getQuest() {
-
+        customAnswer = "";
+        student = Student.builder().build();
         tryAnswerInt = 0;
         String tmpFName;
         String tmpLname;

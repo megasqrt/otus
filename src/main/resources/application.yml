@@ -8,8 +8,28 @@ application:
 server:
   port: 8090
 
-logging:
-  config: classpath:log4j2.xml
+Configuration:
+  status: info
+  appenders:
+    Console:
+      name: Console
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "%msg%n"
+  Loggers:
+    logger:
+      - name: ru.kornilov.otus.Questuator.service.Questuator
+        level: debug
+        additivity: false
+        AppenderRef:
+          ref: Console
+    Root:
+      level: error
+      AppenderRef:
+        ref: Console
+
+
+
 
 
 
