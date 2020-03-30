@@ -2,34 +2,12 @@ application:
   version: 1.0
   locale: ru
   qpath: csv/quests
+  studentDB: student.csv
   message-base-name: classpath:message
   encoding: UTF-8
 
 server:
   port: 8090
-
-Configutation:
-  level: info
-
-  Appenders:
-    Console:
-      name: Console
-      target: SYSTEM_OUT
-      PatternLayout:
-        pattern: "%msg%n"
-
-  Loggers:
-    Loger:
-      name: ru.kornilov.otus.Questuator.service.Questuator
-      level: debug
-      additivity: false
-      AppenderRef:
-        ref: Console
-
-    Root:
-      level: error
-      AppenderRef:
-        ref: Console
 
 
 
