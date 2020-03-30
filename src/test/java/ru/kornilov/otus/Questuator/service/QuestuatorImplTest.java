@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.shell.jline.InteractiveShellApplicationRunner;
+import org.springframework.shell.jline.ScriptShellApplicationRunner;
 import ru.kornilov.otus.Questuator.config.AppLocale;
 import ru.kornilov.otus.Questuator.dao.QuestionDao;
 import ru.kornilov.otus.Questuator.domain.Question;
@@ -16,15 +20,16 @@ import java.io.IOException;
 import java.util.Collections;
 
 @DisplayName("Класс QuestuatorImpl")
-@SpringBootTest
+@SpringBootTest(properties = {
+        InteractiveShellApplicationRunner.SPRING_SHELL_INTERACTIVE_ENABLED + "=false",
+        ScriptShellApplicationRunner.SPRING_SHELL_SCRIPT_ENABLED + "=false"
+})
 class QuestuatorImplTest {
 
     @Mock
     QuestionDao questionDao;
-
     @Mock
     AppLocale appLocale;
-
     @Mock
     private BufferedReader mockBufferedReader;
 

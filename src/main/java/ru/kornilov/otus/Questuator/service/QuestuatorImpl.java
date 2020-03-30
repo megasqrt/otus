@@ -25,20 +25,26 @@ public class QuestuatorImpl implements Questuator {
 
     private final AppLocale appLocale;
 
-
     @Override
     public void getQuest() {
+        getQuest("","");
+    }
+
+    public void getQuest(String fName,String lName) {
         customAnswer = "";
         student = Student.builder().build();
         tryAnswerInt = 0;
-        String tmpFName;
-        String tmpLname;
+        String tmpFName=fName;
+        String tmpLname=lName;
 
-        sout.info(appLocale.getMessage("start.fname"));
-        tmpFName = readAnswerInConsole();
 
-        sout.info(appLocale.getMessage("start.lname"));
-        tmpLname = readAnswerInConsole();
+        if(tmpFName.isEmpty()&&tmpLname.isEmpty()) {
+            sout.info(appLocale.getMessage("start.fname"));
+            tmpFName = readAnswerInConsole();
+
+            sout.info(appLocale.getMessage("start.lname"));
+            tmpLname = readAnswerInConsole();
+        }
 
         student = Student.builder().firstName(tmpFName).lastName(tmpLname).build();
 
