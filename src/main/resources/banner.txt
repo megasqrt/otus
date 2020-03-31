@@ -1,0 +1,29 @@
+					  uvzuvz
+                 zuvzuvzuvzuvzuvz                
+             uvzuvzuvzuvzuvzuvzuvzuvz            
+          uvzuvzuvzuvzuvzuvzuvzuvzuvzuvz          
+         uvzuvzuvzuvzuvzuvzuvzuvzuvzuvzuvz        
+        uvzuvzuzvuvzuzvuvzuvzuvzuvzuvzuvzuv       
+      uvzuvzuvzuvzuvzuvzuvzuvzuvzuvzuvzuvzuvz     
+     uvzuvzuzvuvzuvzuvzu  uvzuvzuzvuvzuvzuvzu    
+     uvzuvzuvz  uvzuvzuv  vzuvzuvz  uvzuvzuvzu   
+                uvzuvzu    uvzuvzuv               
+                 uvzu       uvzuvz                
+   uvzuvzuz     uvzuv      uvzu      uvzuvzuvzu   
+   uvzuvzuvzu     uvz        uvz     uvzuvzuvzu   
+   uvzuvzuvzuv     u         uv     uvzuvzuvzuz  
+    uvzuvzuvzuv         u           uvzuvzuvzuv   
+    uvzuvzuvzuu        uvz         uvzuvzuvzuv  
+    uvzuvzuvzuvz       uvz        uvzuvzuvzuvz    
+     uvzuvzuvzuvz     uvzuvz     uvzuvzuvzuvz     
+     uvzuvzuvzuvzu   uvzuvzuv   uvzuvzuvzuvzu     
+      uvzuvzuvzuc    uvzuvzu    uvzuvzuvzuvz      
+       uvzuvzuvzuvz uvzuvzuvz  uvzuvzuvzuvz       
+        uvzuvzuvzuvzuvzuvzuvzuvzuvzuvzuvzu        
+          uvzuvzuvzuvzuvzuvzuvzuvzuvzuvz        
+           uvzuvzuvzuvzuvzuvzuvzuvzuvzu           
+              uvzuvzuvzuvzuvzuvzuvzu              
+                 uvzuvzuvzuvzuvzu                 
+                      uvzuvz
+Залогинтесь командой login Имя Фамилия
+и запустите тест командой start

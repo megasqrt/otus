@@ -1,0 +1,22 @@
+application:
+  version: 1.0
+  locale: ru
+  qpath: csv/quests
+  studentDB: student.csv
+  message-base-name: classpath:message
+  encoding: UTF-8
+
+server:
+  port: 8090
+
+logging:
+  level:
+    root: error
+    ru.kornilov.otus.questuator.service: info
+  pattern:
+    console: "%msg%n"
+
+
+
+
+
