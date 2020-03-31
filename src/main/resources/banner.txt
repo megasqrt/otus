@@ -24,4 +24,6 @@
            uvzuvzuvzuvzuvzuvzuvzuvzuvzu           
               uvzuvzuvzuvzuvzuvzuvzu              
                  uvzuvzuvzuvzuvzu                 
-                      uvzuvz                      
+                      uvzuvz
+Залогинтесь командой login Имя Фамилия
+и запустите тест командой start

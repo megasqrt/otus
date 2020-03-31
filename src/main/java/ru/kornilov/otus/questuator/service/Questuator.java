@@ -1,4 +1,4 @@
-package ru.kornilov.otus.Questuator.service;
+package ru.kornilov.otus.questuator.service;
 
 public interface Questuator {
     void getQuest();

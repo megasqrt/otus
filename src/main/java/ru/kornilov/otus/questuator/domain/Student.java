@@ -1,4 +1,4 @@
-package ru.kornilov.otus.Questuator.domain;
+package ru.kornilov.otus.questuator.domain;
 
 import lombok.Builder;
 import lombok.Data;

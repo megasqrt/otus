@@ -1,11 +1,11 @@
-package ru.kornilov.otus.Questuator.dao;
+package ru.kornilov.otus.questuator.dao;
 
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import lombok.RequiredArgsConstructor;
-import ru.kornilov.otus.Questuator.domain.Question;
+import ru.kornilov.otus.questuator.domain.Question;
 
 import java.io.Reader;
 import java.nio.file.Files;

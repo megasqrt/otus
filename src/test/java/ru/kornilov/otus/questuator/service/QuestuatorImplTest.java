@@ -1,4 +1,4 @@
-package ru.kornilov.otus.Questuator.service;
+package ru.kornilov.otus.questuator.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,13 +7,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.shell.jline.InteractiveShellApplicationRunner;
 import org.springframework.shell.jline.ScriptShellApplicationRunner;
-import ru.kornilov.otus.Questuator.config.AppLocale;
-import ru.kornilov.otus.Questuator.dao.QuestionDao;
-import ru.kornilov.otus.Questuator.domain.Question;
+import ru.kornilov.otus.questuator.config.AppLocale;
+import ru.kornilov.otus.questuator.dao.QuestionDao;
+import ru.kornilov.otus.questuator.domain.Question;
 
 import java.io.BufferedReader;
 import java.io.IOException;

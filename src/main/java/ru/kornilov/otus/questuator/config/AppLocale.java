@@ -1,4 +1,4 @@
-package ru.kornilov.otus.Questuator.config;
+package ru.kornilov.otus.questuator.config;
 
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;

@@ -1,16 +1,18 @@
-package ru.kornilov.otus.Questuator.service;
+package ru.kornilov.otus.questuator.service;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.kornilov.otus.Questuator.config.AppLocale;
-import ru.kornilov.otus.Questuator.dao.QuestionDao;
-import ru.kornilov.otus.Questuator.domain.Question;
-import ru.kornilov.otus.Questuator.domain.Student;
+import org.springframework.stereotype.Service;
+import ru.kornilov.otus.questuator.config.AppLocale;
+import ru.kornilov.otus.questuator.dao.QuestionDao;
+import ru.kornilov.otus.questuator.domain.Question;
+import ru.kornilov.otus.questuator.domain.Student;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
+@Service
 @RequiredArgsConstructor
 public class QuestuatorImpl implements Questuator {
 

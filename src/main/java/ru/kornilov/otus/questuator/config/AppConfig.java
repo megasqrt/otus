@@ -1,19 +1,19 @@
-package ru.kornilov.otus.Questuator.config;
+package ru.kornilov.otus.questuator.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import ru.kornilov.otus.Questuator.dao.QuestionDao;
-import ru.kornilov.otus.Questuator.dao.QuestionDaoImpl;
-import ru.kornilov.otus.Questuator.service.QuestuatorImpl;
+import ru.kornilov.otus.questuator.dao.QuestionDao;
+import ru.kornilov.otus.questuator.dao.QuestionDaoImpl;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 @Configuration
 public class AppConfig {
+
     @Autowired
     private ApplicationProperties applicationProperties;
 
@@ -28,10 +28,10 @@ public class AppConfig {
         return new BufferedReader(new InputStreamReader(System.in));
     }
 
-    @Bean
+    /*@Bean
     public QuestuatorImpl questuator(AppLocale appLocale, QuestionDao dao, BufferedReader bufferedReader) {
         return new QuestuatorImpl(bufferedReader, dao, appLocale);
-    }
+    }*/
 
     @Bean
     public MessageSource messageSource() {

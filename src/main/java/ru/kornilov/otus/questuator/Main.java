@@ -1,9 +1,9 @@
-package ru.kornilov.otus.Questuator;
+package ru.kornilov.otus.questuator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import ru.kornilov.otus.Questuator.service.Questuator;
+import ru.kornilov.otus.questuator.service.Questuator;
 
 @SpringBootApplication
 public class Main {

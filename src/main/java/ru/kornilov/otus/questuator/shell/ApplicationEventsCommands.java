@@ -1,4 +1,4 @@
-package ru.kornilov.otus.Questuator.shell;
+package ru.kornilov.otus.questuator.shell;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.shell.Availability;
@@ -6,7 +6,7 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
-import ru.kornilov.otus.Questuator.service.Questuator;
+import ru.kornilov.otus.questuator.service.Questuator;
 
 @ShellComponent
 @RequiredArgsConstructor
@@ -21,7 +21,7 @@ public class ApplicationEventsCommands {
     public String login(@ShellOption String firstName, @ShellOption String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        return String.format("Добро пожаловать: %s %s", firstName, lastName);
+        return String.format("Welcome: %s %s", firstName, lastName);
     }
 
     @ShellMethod(value = "Start questuator", key = {"s", "start", "startQuest"})

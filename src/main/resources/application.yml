@@ -9,6 +9,14 @@ application:
 server:
   port: 8090
 
+logging:
+  level:
+    root: error
+    ru.kornilov.otus.questuator.service: info
+  pattern:
+    console: "%msg%n"
+
+
 
 
 
